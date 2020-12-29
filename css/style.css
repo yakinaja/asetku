@@ -1,0 +1,49 @@
+
+body 
+{
+    background-color: #35414f;
+}
+
+img
+{
+    margin-bottom: 2rem;
+    margin-left:44%;
+    margin-top: 8%;
+}
+.login
+{
+    width: 25%;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    margin-top: 5%;
+    margin: auto;
+}
+h3
+{
+    color:#44b5af;
+    font-family: 'Rubik';
+    font-weight: 400;
+}
+form
+{
+    font-family: 'Roboto';
+    font-weight: 400;
+    color: #3d3d3d;
+}
+.form-group input 
+{
+    background-color: #DCE3ED;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Rubik';
+
+}
+.btn
+{
+    background-color: #44b5af;
+    color: #fff;
+}
+.btn:hover
+{
+    background-color: #3AA098;
+}
