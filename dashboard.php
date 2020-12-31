@@ -14,11 +14,7 @@
 <body>
 <section class="heading">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-
-            </div>
-        </div>
+        <a href="http://"><img class="mt-1" src="images/logo-4.png" width="85" alt=""></a>
     </div>
 </section>
 <section class="dashboard">
@@ -33,6 +29,10 @@
 
 </section>
 
+
+<footer>
+
+</footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -2,7 +2,6 @@ body {
     background-color: #f3f7fa;
 }
 
-/* Heading */
 .heading 
 {
     width: 100%;
@@ -10,15 +9,12 @@ body {
     background-color:#1DAAA1;
 }
 
-/* dashboard */
-.dashboard
+/* add section */
+.add h2
 {
-    margin-top:10%;
-}
-
-.dashboard img
-{
-    padding: 1rem;
+    font-family: 'Roboto';
+    font-weight: 300;
+    
 }
 
 footer
