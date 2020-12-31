@@ -26,3 +26,10 @@ footer
     background-color:#1DAAA1;
    
 }
+
+footer p
+{
+    font-family:'Roboto';
+    font-weight: 400;
+    color: #fff;
+}

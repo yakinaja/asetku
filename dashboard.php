@@ -14,15 +14,15 @@
 <body>
 <section class="heading">
     <div class="container-fluid">
-        <a href="http://"><img class="mt-1" src="images/logo-4.png" width="85" alt=""></a>
+        <a href="dashboard.php"><img class="mt-1" src="images/logo-4.png" width="85" alt=""></a>
     </div>
 </section>
 <section class="dashboard">
     <div class="container">
         <div class="row text-center">
             <div class="col  ">
-               <a href="#"><img src="images/human.png" alt="" width="300"></a>
-               <a href="#"><img src="images/assets.png" alt="" width="300"></a>
+               <a href="karyawan.php"><img src="images/human.png" alt="" width="300"></a>
+               <a href="asset.php"><img src="images/assets.png" alt="" width="300"></a>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
 
 
 <footer>
-
+<p class="mt-2 ml-3 ">© 2020 Asetku. All Rights Reserved.</p>
 </footer>
 
     <!-- Optional JavaScript -->

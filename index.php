@@ -1,3 +1,35 @@
+<?php
+
+// Koneksi database
+$db = mysqli_connect("localhost", "root", "", "aset");
+
+if( isset($_POST["login"])) {
+
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    $result = mysqli_query($db, "SELECT * FROM akun WHERE username='$username'");
+
+    if( mysqli_num_rows($result) === 1) {
+
+        $row = mysqli_fetch_assoc($result);
+        if($password == $row["password"]) {
+
+            header("Location:dashboard.php");
+            exit;
+        } else {
+            header("Location:index.php");
+            exit;
+        }
+
+    }
+
+}
+
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -22,19 +54,19 @@
             <div class="col">              
                 <img src="images/logo-3.png" width="150" alt="">
                 <div class="login p-4 shadow p-3 mb-5 bg-white rounded">
-                    <form>
+                    <form action="" method="post">
                         <h3 class="text-center mb-4">Login</h3>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Enter email">
+                            <label for="username">Username</label>
+                            <input name="username" type="text" class="form-control" id="username"
+                                aria-describedby="emailHelp" placeholder="Enter Username">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1"
+                            <label for="password">Password</label>
+                            <input name=" password" type="password" class="form-control" id="password"
                                 placeholder="Password">
                         </div>
-                        <button type="submit" class="btn btn-block mt-4">Submit</button>
+                        <button name="login" type="submit" class="btn btn-block mt-4">Submit</button>
                     </form>
                 </div>
             </div>

@@ -1,3 +1,34 @@
+<?php
+
+// Koneksi database
+$db = mysqli_connect("localhost", "root", "", "aset");
+
+// ambil data tabel
+$result = mysqli_query($db, "SELECT * FROM tabel_karyawan");
+
+// ambil data dari form
+if( isset($_POST["tambah"])) {
+
+    $nama = htmlspecialchars($_POST["nama"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $gender = htmlspecialchars($_POST["gender"]);
+    $jabatan = htmlspecialchars($_POST["jabatan"]);
+    $hp = htmlspecialchars($_POST["hp"]);
+    $darah = htmlspecialchars($_POST["darah"]);
+
+    // query insert
+    $query = "INSERT INTO tabel_karyawan VALUES('', '$darah', '$nama', '$email', '$gender', '$jabatan', '$hp')";
+    mysqli_query($db,$query);
+
+    echo "<script>
+    document.location.href = 'karyawan.php';
+</script>";
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +49,7 @@
 
 <body>
     <section class="heading">
-        <a href="http://"><img class="mt-1" src="images/logo-4.png" width="85" alt=""></a>
+        <a href="dashboard.php"><img class="mt-1" src="images/logo-4.png" width="85" alt=""></a>
     </section>
     <section class="add mt-4 mb-4">
         <div class="container">
@@ -44,45 +75,55 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form>
+                    <form action="" method="post" enctype="multipart/form-data">
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="name">Nama</label>
-                                <input type="text" class="form-control" id="name" aria-describedby="emailHelp"
+                                <input name="nama" type="text" class="form-control" id="name" aria-describedby="emailHelp"
                                     placeholder="Nama Lengkap">
                             </div>
 
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                                <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp"
                                     placeholder="Email">
                             </div>
 
                             <div class="form-group">
                                 <label for="kelamin">Gender</label>
-                                <select name="kelamin" id="kelamin" class="form-control">
-                                    <option value="">Laki-laki</option>
-                                    <option value="">Wanita</option>
+                                <select type="text" name="gender" id="kelamin" class="form-control">
+                                    <option value="Laki-laki">Laki-laki</option>
+                                    <option value="Wanita">Wanita</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <label for="jabatan">Jabatan</label>
-                                <select name="jabatan" id="jabatan" class="form-control">
-                                    <option value="">Komisaris</option>
-                                    <option value="">Direktur</option>
-                                    <option value="">Karyawan</option>
+                                <select type="text" name="jabatan" id="jabatan" class="form-control">
+                                    <option value="Komisaris">Komisaris</option>
+                                    <option value="Direktur">Direktur</option>
+                                    <option value="Karyawan">Karyawan</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <label for="hp">No.Handphone</label>
-                                <input type="text" class="form-control" id="hp" aria-describedby="emailHelp"
+                                <input name="hp" type="text" class="form-control" id="hp" aria-describedby="emailHelp"
                                     placeholder="handphone">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="darah">Golongan Darah</label>
+                                <select type="text" name="darah" id="darah" class="form-control">
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="AB">AB</option>
+                                    <option value="O">O</option>
+                                </select>
                             </div>
                         </div>
                         <div class="modal-footer border-top-0 d-flex justify-content-center">
-                            <button type="submit" class="btn btn-success">Submit</button>
+                            <button name="tambah" type="submit" class="btn btn-success">Tambah</button>
                         </div>
                     </form>
                 </div>
@@ -96,38 +137,39 @@
                 <div class="col">
                     <table class="table table-hover table-light">
                         <thead>
+                            
                             <tr>
-                                <th scope="col">No</th>
+                                <th scope="col">No</th>                                
                                 <th scope="col">Nama</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Gender</th>
+                                <th scope="col">Handphone</th>
+                                <th scope="col">Gender</th>                                
                                 <th scope="col">Jabatan</th>
+                                <th scope="col">Golongan Darah</th>
                                 <th scope="col">Aksi</th>
 
                             </tr>
                         </thead>
                         <tbody>
+                        <?php $i=1; ?>
+                        <?php while( $row = mysqli_fetch_assoc($result) ) : ?>
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Fajri Isnanto</td>
-                                <td>fajri@google.com</td>
-                                <td>Laki-laki</td>
-                                <td>Direktur</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Fajri Isnanto</td>
-                                <td>fajri@google.com</td>
-                                <td>Laki-laki</td>
-                                <td>Direktur</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Fajri Isnanto</td>
-                                <td>fajri@google.com</td>
-                                <td>Laki-laki</td>
-                                <td>Direktur</td>
-                            </tr>
+                                <th scope="row"><?php echo $i ?></th>                                
+                                <td><?php echo $row["nama"] ?></td>
+                                <td><?php echo $row["email"] ?></td>
+                                <td><?php echo $row["hp"] ?></td>
+                                <td><?php echo $row["gender"] ?></td>                               
+                                <td><?php echo $row["jabatan"] ?></td>
+                                <td><?php echo $row["darah"]?></td>
+                                <td><a href="hapus.php?id=<?php echo $row["id"];?>">
+                                <button name="hapus" class="btn btn-danger">Hapus</button>
+                            </a>
+                        </td>
+                            </tr>     
+                            <?php $i++ ?>               
+                        <?php endwhile; ?>
+
+                        
                         </tbody>
                     </table>
                 </div>
@@ -139,7 +181,7 @@
 
 
     <footer>
-
+    <p class="mt-2 ml-3 ">© 2020 Asetku. All Rights Reserved.</p>
     </footer>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
